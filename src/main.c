@@ -4,6 +4,8 @@
 
 #include "../include/button.h"
 
+//gcc src/main.c src/button.c -lSDL2 -lSDL2main -o main
+
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
 SDL_Event event;
