@@ -39,6 +39,14 @@ Button createButton(int x, int y, int width, int height, int isPressed, SDL_Colo
     return button;
 }
 
+void handleButtonEvent(Button *btn, const SDL_Event event) {
+    if (event.type == SDL_MOUSEBUTTONDOWN) {
+        int *mx, *my;
+        SDL_GetMouseState(mx, my);
+        printf("Mouse x: %d, Mouse y: %d", &mx, &my);
+    }
+}
+
 void renderButton(Button *btn, SDL_Renderer *renderer) {
     /* Draw button portion of button */
     SDL_Rect buttonRect = {btn->x, btn->y, btn->width, btn->height};

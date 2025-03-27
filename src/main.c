@@ -68,6 +68,7 @@ int main(int argc, char **argv) {
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
         renderButton(&btn, renderer);
+        handleButtonEvent(&btn, event);
         //renderTextBox(&text, renderer);
         SDL_RenderPresent(renderer);
     }

@@ -12,6 +12,8 @@ typedef struct {
 
 Button createButton(int x, int y, int width, int height, int isPressed, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor, SDL_Color fontColor, int fontSize, char *text);
 
+void handleButtonEvent(Button *btn, const SDL_Event event);
+
 void renderButton(Button *btn, SDL_Renderer *renderer);
 
 #endif
