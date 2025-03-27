@@ -6,13 +6,13 @@
 
 #include "../include/text.h"
 
-TextBox createTextBox(int x, int y, int width, int height, SDL_Color color, char *text) {
+TextBox createTextBox(int x, int y, int width, int height, SDL_Color color, int fontSize, char *text) {
     if (width <= 0 || height <= 0) {
         printf("Error: invalid text box dimensions (%d x %d)\n", width, height);
         return (TextBox){0};
     }
 
-    TextBox textBox = {x, y, width, height, color, NULL};
+    TextBox textBox = {x, y, width, height, color, fontSize, NULL};
 
     textBox.text = malloc(strlen(text) + 1);
     if (!textBox.text) {
@@ -30,7 +30,7 @@ TextBox createTextBox(int x, int y, int width, int height, SDL_Color color, char
 void renderTextBox(TextBox *textBox, SDL_Renderer *renderer) {
     if (!textBox || !textBox->text || !renderer) return;
 
-    TTF_Font *Font = TTF_OpenFont("./fonts/font.ttf", 10);
+    TTF_Font *Font = TTF_OpenFont("./fonts/font.ttf", textBox->fontSize);
     if (!Font) {
         printf("Error: failed to load font\n");
         return;

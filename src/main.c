@@ -4,9 +4,10 @@
 #include "SDL_ttf.h"
 
 #include "../include/button.h"
+#include "../include/toggleButton.h"
 #include "../include/text.h"
 
-//gcc src/main.c src/button.c src/text.c -IC:/msys64/mingw64/include/SDL2 -LC:/msys64/mingw64/lib -lSDL2 -lSDL2main -lSDL2_ttf -o main
+//gcc src/main.c src/button.c src/toggleButton.c src/text.c -IC:/msys64/mingw64/include/SDL2 -LC:/msys64/mingw64/lib -lSDL2 -lSDL2main -lSDL2_ttf -o main
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
@@ -14,6 +15,7 @@ SDL_Event event;
 
 Button btn;
 TextBox text;
+ToggleButton tglBtn;
 
 int running = 1;
 
@@ -39,8 +41,9 @@ int renderWindow() {
         printf("SDL_CreateRenderer success\n");
     }
 
-    btn = createButton((700 - 200) / 2, 400, 200, 50, 0, (SDL_Color){0, 255, 255}, (SDL_Color){0, 255, 0}, (SDL_Color){255, 255, 255}, (SDL_Color){0, 0, 0}, 100, "Click to start auto clicker!");
-    //text = createTextBox(30, 30, 50, 50, (SDL_Color){255, 255, 255}, "Hi");
+    btn = createButton((700 - 200) / 2, 400, 200, 50, 0, 0, (SDL_Color){0, 255, 255}, (SDL_Color){0, 255, 0}, (SDL_Color){255, 255, 255}, (SDL_Color){0, 0, 0}, 100, "Click to start auto clicker!");
+    tglBtn = createToggleButton((700 - 200) / 2, 200, 200, 50, 0, 0, (SDL_Color){255, 0, 0}, (SDL_Color){0, 0, 255}, (SDL_Color){255, 255, 255}, (SDL_Color){0, 0, 0}, 100, "Toggle button");
+    text = createTextBox(30, 30, 50, 50, (SDL_Color){255, 255, 255}, 50, "Hi");
     
     return 0;
 }
@@ -64,12 +67,14 @@ int main(int argc, char **argv) {
             if (event.type == SDL_QUIT) {
                 running = 0;
             }
+            handleButtonEvent(&btn, event);
+            handleToggleButtonEvent(&tglBtn, event);
         }
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
         renderButton(&btn, renderer);
-        handleButtonEvent(&btn, event);
-        //renderTextBox(&text, renderer);
+        renderToggleButton(&tglBtn, renderer);
+        renderTextBox(&text, renderer);
         SDL_RenderPresent(renderer);
     }
 
