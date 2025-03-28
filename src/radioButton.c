@@ -22,7 +22,6 @@ RadioButton createRadioButton(int x, int y, int width, int height, int isSelecte
 void renderToggleButton(RadioButton *btn, SDL_Renderer *renderer) {
     SDL_Rect buttonRect = {btn->x, btn->y, btn->width, btn->height};
 
-    for 
 
     SDL_RenderDrawRect(renderer, &buttonRect);
     SDL_RenderFillRect(renderer, &buttonRect);
