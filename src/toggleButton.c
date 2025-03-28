@@ -16,7 +16,7 @@ ToggleButton createToggleButton(int x, int y, int width, int height, int isToggl
     }
 
     if (width <= 0 || height <= 0) {
-        printf("Error: invalid button dimensions (%d x %d)\n", width, height);
+        printf("Error: invalid toggle button dimensions (%d x %d)\n", width, height);
         return (ToggleButton){0};
     }
 
@@ -24,17 +24,17 @@ ToggleButton createToggleButton(int x, int y, int width, int height, int isToggl
         text = "";
     }
 
-    ToggleButton button = {x, y, width, height, isToggled, isHovered, color, hoverColor, clickColor, fontColor, fontSize, NULL};
+    ToggleButton button = {x, y, width, height, isToggled, isHovered, color, hoverColor, clickColor, fontColor, fontSize, text};
 
     button.text = malloc(strlen(text) + 1);
     if (!button.text) {
-        printf("Error: failed to allocate memory for text in button\n");
+        printf("Error: failed to allocate memory for text in toggle button\n");
         return (ToggleButton){0};
     }
 
     strcpy(button.text, text);
 
-    printf("createButton success\n");
+    printf("createToggleButton success\n");
 
     return button;
 }
@@ -73,20 +73,20 @@ void renderToggleButton(ToggleButton *btn, SDL_Renderer *renderer) {
     if (!btn || !btn->text || !renderer) return;
 
     if (!toggleButtonFont) {
-        printf("Error: failed to load font\n");
+        printf("Error: failed to load font in toggleButton\n");
         return;
     }
 
     SDL_Surface *surface = TTF_RenderText_Blended(toggleButtonFont, btn->text, btn->fontColor);
     if (!surface) {
-        printf("Error: failed to create text surface\n");
+        printf("Error: failed to create text surface in toggleButton\n");
         TTF_CloseFont(toggleButtonFont);
         return;
     }
 
     SDL_Texture *message = SDL_CreateTextureFromSurface(renderer, surface);
     if (!message) {
-        printf("Error: failed to create text texture\n");
+        printf("Error: failed to create text texture in toggleButton\n");
         SDL_FreeSurface(surface);
         return;
     }

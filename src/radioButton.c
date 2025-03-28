@@ -22,6 +22,10 @@ RadioButton createRadioButton(int x, int y, int width, int height, int isSelecte
 void renderToggleButton(RadioButton *btn, SDL_Renderer *renderer) {
     SDL_Rect buttonRect = {btn->x, btn->y, btn->width, btn->height};
 
+    // for each radio button with group of int group, check if any are toggled
+    //      if so, untoggle the one that is toggled, and toggle the current one
+    
+    
 
     SDL_RenderDrawRect(renderer, &buttonRect);
     SDL_RenderFillRect(renderer, &buttonRect);

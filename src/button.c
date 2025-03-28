@@ -24,7 +24,7 @@ Button createButton(int x, int y, int width, int height, int isPressed, int isHo
         text = "";
     }
 
-    Button button = {x, y, width, height, isPressed, isHovered, color, hoverColor, clickColor, fontColor, fontSize, NULL};
+    Button button = {x, y, width, height, isPressed, isHovered, color, hoverColor, clickColor, fontColor, fontSize, text};
 
     button.text = malloc(strlen(text) + 1);
     if (!button.text) {
@@ -75,13 +75,13 @@ void renderButton(Button *btn, SDL_Renderer *renderer) {
     if (!btn || !btn->text || !renderer) return;
 
     if (!buttonFont) {
-        printf("Error: failed to load font\n");
+        printf("Error: failed to load font in button\n");
         return;
     }
 
     SDL_Surface *surface = TTF_RenderText_Blended(buttonFont, btn->text, btn->fontColor);
     if (!surface) {
-        printf("Error: failed to create text surface\n");
+        printf("Error: failed to create text surface in button\n");
         TTF_CloseFont(buttonFont);
         return;
     }

@@ -41,8 +41,8 @@ int renderWindow() {
         printf("SDL_CreateRenderer success\n");
     }
 
-    btn = createButton((700 - 200) / 2, 400, 200, 50, 0, 0, (SDL_Color){0, 255, 255}, (SDL_Color){0, 255, 0}, (SDL_Color){255, 255, 255}, (SDL_Color){0, 0, 0}, 100, "Click to start auto clicker!");
-    tglBtn = createToggleButton((700 - 200) / 2, 200, 200, 50, 0, 0, (SDL_Color){255, 0, 0}, (SDL_Color){0, 0, 255}, (SDL_Color){255, 255, 255}, (SDL_Color){0, 0, 0}, 100, "Toggle button");
+    btn = createButton((700 - 200) / 2, 400, 200, 50, 0, 0, (SDL_Color){0, 255, 255}, (SDL_Color){0, 255, 0}, (SDL_Color){255, 255, 255}, (SDL_Color){0, 0, 0}, 100, NULL);
+    tglBtn = createToggleButton((700 - 200) / 2, 200, 200, 50, 0, 0, (SDL_Color){255, 0, 0}, (SDL_Color){0, 0, 255}, (SDL_Color){255, 255, 255}, (SDL_Color){0, 0, 0}, 100, NULL);
     text = createTextBox(30, 30, 50, 50, (SDL_Color){255, 255, 255}, 50, "Hi");
     
     return 0;

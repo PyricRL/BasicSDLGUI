@@ -22,7 +22,7 @@ TextBox createTextBox(int x, int y, int width, int height, SDL_Color color, int 
 
     strcpy(textBox.text, text);
 
-    printf("createTextBox success");
+    printf("createTextBox success\n");
 
     return textBox;
 }
