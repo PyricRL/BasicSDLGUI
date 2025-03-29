@@ -6,8 +6,10 @@
 #include "../include/button.h"
 #include "../include/toggleButton.h"
 #include "../include/text.h"
+#include "../include/radioButton.h"
+#include "../include/radioButtonManager.h"
 
-//gcc src/main.c src/button.c src/toggleButton.c src/text.c -IC:/msys64/mingw64/include/SDL2 -LC:/msys64/mingw64/lib -lSDL2 -lSDL2main -lSDL2_ttf -o main
+//gcc src/main.c src/button.c src/toggleButton.c src/text.c src/radioButton.c src/radioButtonManager.c -IC:/msys64/mingw64/include/SDL2 -LC:/msys64/mingw64/lib -lSDL2 -lSDL2main -lSDL2_ttf -o main
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;
@@ -16,6 +18,9 @@ SDL_Event event;
 Button btn;
 TextBox text;
 ToggleButton tglBtn;
+RadioButton btn1;
+RadioButton btn2;
+RadioButtonGroup g1;
 
 int running = 1;
 
@@ -44,6 +49,12 @@ int renderWindow() {
     btn = createButton((700 - 200) / 2, 400, 200, 50, 0, 0, (SDL_Color){0, 255, 255}, (SDL_Color){0, 255, 0}, (SDL_Color){255, 255, 255}, (SDL_Color){0, 0, 0}, 100, NULL);
     tglBtn = createToggleButton((700 - 200) / 2, 200, 200, 50, 0, 0, (SDL_Color){255, 0, 0}, (SDL_Color){0, 0, 255}, (SDL_Color){255, 255, 255}, (SDL_Color){0, 0, 0}, 100, NULL);
     text = createTextBox(30, 30, 50, 50, (SDL_Color){255, 255, 255}, 50, "Hi");
+    btn1 = createRadioButton(10, 10, 50, 50, 0, 0, (SDL_Color){0, 255, 255}, (SDL_Color){0, 255, 0}, (SDL_Color){255, 255, 255});
+    btn2 = createRadioButton(70, 10, 50, 50, 0, 0, (SDL_Color){0, 255, 255}, (SDL_Color){0, 255, 0}, (SDL_Color){255, 255, 255});
+    g1 = createRadioButtonGroup(1, 0);
+
+    addRadioButtonToGroup(&g1, &btn1);
+    addRadioButtonToGroup(&g1, &btn2);
     
     return 0;
 }
@@ -69,12 +80,17 @@ int main(int argc, char **argv) {
             }
             handleButtonEvent(&btn, event);
             handleToggleButtonEvent(&tglBtn, event);
+            handleRadioButtonEvent(&g1, event);
         }
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
+
         renderButton(&btn, renderer);
         renderToggleButton(&tglBtn, renderer);
         renderTextBox(&text, renderer);
+        renderRadioButton(&btn1, renderer);
+        renderRadioButton(&btn2, renderer);
+
         SDL_RenderPresent(renderer);
     }
 

@@ -1,14 +1,22 @@
 #ifndef RADIOBUTTONMANAGER_H
 #define RADIOBUTTONMANAGER_H
 
-#include "radioButton.h"
+#define MAX_RADIOBUTTONS 10
 
-#define MAX_RADIO_BUTTON 10
+#include "../include/radioButton.h"
 
 typedef struct {
-    RadioButton *buttons[MAX_RADIO_BUTTON];
-    int count;
-} RadioButtonManager;
+    int id;
+    int selectedRadioButton;
+    int buttonCount;
+    RadioButton *buttons[MAX_RADIOBUTTONS];
+} RadioButtonGroup;
+
+RadioButtonGroup createRadioButtonGroup(int id, int selectedRadioButton);
+
+void addRadioButtonToGroup(RadioButtonGroup *group, RadioButton *btn);
+
+void handleRadioButtonEvent(RadioButtonGroup *group, const SDL_Event event);
 
 
 #endif

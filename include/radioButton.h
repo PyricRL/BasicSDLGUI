@@ -8,12 +8,10 @@ typedef struct {
     int width, height;
     int isSelected;
     int isHovered;
-    int groupID;
     SDL_Color color, hoverColor, clickColor;
-    RadioButtonManager *manager;
 } RadioButton;
 
-void handleRadioButtonEvent(RadioButton *btn, const SDL_Event event);
+RadioButton createRadioButton(int x, int y, int width, int height, int isSelected, int isHovered, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor);
 
 void renderRadioButton(RadioButton *btn, SDL_Renderer *renderer);
 
