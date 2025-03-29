@@ -21,7 +21,7 @@ ToggleButton createToggleButton(int x, int y, int width, int height, int isToggl
     }
 
     if (text == NULL) {
-        text = "";
+        text = " ";
     }
 
     ToggleButton button = {x, y, width, height, isToggled, isHovered, color, hoverColor, clickColor, fontColor, fontSize, text};

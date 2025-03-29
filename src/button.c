@@ -21,7 +21,7 @@ Button createButton(int x, int y, int width, int height, int isPressed, int isHo
     }
 
     if (text == NULL) {
-        text = "";
+        text = " ";
     }
 
     Button button = {x, y, width, height, isPressed, isHovered, color, hoverColor, clickColor, fontColor, fontSize, text};
