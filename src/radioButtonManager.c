@@ -12,7 +12,7 @@
 * holds an index of which button is selected
 */
 
-RadioButtonGroup createRadioButtonGroup(int id, int selectedRadioButton) {
+EXPORT RadioButtonGroup createRadioButtonGroup(int id, int selectedRadioButton) {
     RadioButtonGroup group = {id, selectedRadioButton, 0};
 
     printf("createRadioButtonGroup success\n");
@@ -20,7 +20,7 @@ RadioButtonGroup createRadioButtonGroup(int id, int selectedRadioButton) {
     return group;
 }
 
-void addRadioButtonToGroup(RadioButtonGroup *group, RadioButton *btn) {
+EXPORT void addRadioButtonToGroup(RadioButtonGroup *group, RadioButton *btn) {
     if (group->buttonCount < MAX_RADIOBUTTONS) {
         group->buttons[group->buttonCount] = btn;
         group->buttonCount++;
@@ -29,7 +29,7 @@ void addRadioButtonToGroup(RadioButtonGroup *group, RadioButton *btn) {
     }
 }
 
-void handleRadioButtonEvent(RadioButtonGroup *group, const SDL_Event event) {
+EXPORT void handleRadioButtonEvent(RadioButtonGroup *group, const SDL_Event event) {
     int mx = event.button.x;
     int my = event.button.y;
 

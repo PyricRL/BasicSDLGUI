@@ -7,7 +7,7 @@
 #include "../include/radioButton.h"
 #include "../include/radioButtonManager.h"
 
-RadioButton createRadioButton(int x, int y, int width, int height, int isSelected, int isHovered, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor) {
+EXPORT RadioButton createRadioButton(int x, int y, int width, int height, int isSelected, int isHovered, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor) {
     if (width <= 0 || height <= 0) {
         printf("Error: invalid toggle button dimensions (%d x %d)\n", width, height);
         return (RadioButton){0};
@@ -20,7 +20,7 @@ RadioButton createRadioButton(int x, int y, int width, int height, int isSelecte
     return button;
 }
 
-void renderRadioButton(RadioButton *btn, SDL_Renderer *renderer) {
+EXPORT void renderRadioButton(RadioButton *btn, SDL_Renderer *renderer) {
     SDL_Rect buttonRect = {btn->x, btn->y, btn->width, btn->height};
 
     if (btn->isSelected == 1) {

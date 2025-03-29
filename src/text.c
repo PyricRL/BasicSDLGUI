@@ -6,7 +6,7 @@
 
 #include "../include/text.h"
 
-TextBox createTextBox(int x, int y, int width, int height, SDL_Color color, int fontSize, char *text) {
+EXPORT TextBox createTextBox(int x, int y, int width, int height, SDL_Color color, int fontSize, char *text) {
     if (width <= 0 || height <= 0) {
         printf("Error: invalid text box dimensions (%d x %d)\n", width, height);
         return (TextBox){0};
@@ -27,7 +27,7 @@ TextBox createTextBox(int x, int y, int width, int height, SDL_Color color, int 
     return textBox;
 }
 
-void renderTextBox(TextBox *textBox, SDL_Renderer *renderer) {
+EXPORT void renderTextBox(TextBox *textBox, SDL_Renderer *renderer) {
     if (!textBox || !textBox->text || !renderer) return;
 
     TTF_Font *Font = TTF_OpenFont("./fonts/font.ttf", textBox->fontSize);

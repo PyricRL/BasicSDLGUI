@@ -11,6 +11,7 @@
 #include "../include/textInput.h"
 
 //gcc src/main.c src/button.c src/toggleButton.c src/text.c src/radioButton.c src/radioButtonManager.c src/textInput.c -IC:/msys64/mingw64/include/SDL2 -LC:/msys64/mingw64/lib -lSDL2 -lSDL2main -lSDL2_ttf -o main
+//gcc -shared -o pyricGUILIB.dll src/main.c src/button.c src/toggleButton.c src/text.c src/radioButton.c src/radioButtonManager.c src/textInput.c -IC:/msys64/mingw64/include/SDL2 -LC:/msys64/mingw64/lib -lSDL2 -lSDL2main -lSDL2_ttf
 
 SDL_Window *window = NULL;
 SDL_Renderer *renderer = NULL;

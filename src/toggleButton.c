@@ -8,7 +8,7 @@
 
 TTF_Font *toggleButtonFont = NULL;
 
-ToggleButton createToggleButton(int x, int y, int width, int height, int isToggled, int isHovered, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor, SDL_Color fontColor, int fontSize, char *text) {
+EXPORT ToggleButton createToggleButton(int x, int y, int width, int height, int isToggled, int isHovered, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor, SDL_Color fontColor, int fontSize, char *text) {
     toggleButtonFont = TTF_OpenFont("./fonts/font.ttf", fontSize);
     if (toggleButtonFont == NULL) {
         printf("Error: failed to load font");
@@ -39,7 +39,7 @@ ToggleButton createToggleButton(int x, int y, int width, int height, int isToggl
     return button;
 }
 
-void handleToggleButtonEvent(ToggleButton *btn, const SDL_Event event) {
+EXPORT void handleToggleButtonEvent(ToggleButton *btn, const SDL_Event event) {
     int mx = event.button.x;
     int my = event.button.y;
     if (mx >= btn->x && mx <= (btn->x + btn->width) && my >= btn->y && my <= (btn->y + btn->height))
@@ -53,7 +53,7 @@ void handleToggleButtonEvent(ToggleButton *btn, const SDL_Event event) {
     }
 }
 
-void renderToggleButton(ToggleButton *btn, SDL_Renderer *renderer) {
+EXPORT void renderToggleButton(ToggleButton *btn, SDL_Renderer *renderer) {
     /* Draw button portion of button */
     SDL_Rect buttonRect = {btn->x, btn->y, btn->width, btn->height};
 

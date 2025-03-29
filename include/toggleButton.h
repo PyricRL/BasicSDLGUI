@@ -1,6 +1,16 @@
 #ifndef TOGGLEBUTTON_H
 #define TOGGLEBUTTON_H
 
+#ifdef _WIN32
+    #ifdef BUILDDLL
+        #define EXPORT __declspec(dllexport)
+    #else
+        #define EXPORT __declspec(dllimport)
+    #endif
+#else
+    #define EXPORT __attribute__((visibility("default")))
+#endif
+
 typedef struct {
     int x, y;
     int width, height;
@@ -11,10 +21,10 @@ typedef struct {
     char *text;
 } ToggleButton;
 
-ToggleButton createToggleButton(int x, int y, int width, int height, int isToggled, int isHovered, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor, SDL_Color fontColor, int fontSize, char *text);
+EXPORT ToggleButton createToggleButton(int x, int y, int width, int height, int isToggled, int isHovered, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor, SDL_Color fontColor, int fontSize, char *text);
 
-void handleToggleButtonEvent(ToggleButton *btn, const SDL_Event event);
+EXPORT void handleToggleButtonEvent(ToggleButton *btn, const SDL_Event event);
 
-void renderToggleButton(ToggleButton *btn, SDL_Renderer *renderer);
+EXPORT void renderToggleButton(ToggleButton *btn, SDL_Renderer *renderer);
 
 #endif

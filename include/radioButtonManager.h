@@ -1,6 +1,16 @@
 #ifndef RADIOBUTTONMANAGER_H
 #define RADIOBUTTONMANAGER_H
 
+#ifdef _WIN32
+    #ifdef BUILDDLL
+        #define EXPORT __declspec(dllexport)
+    #else
+        #define EXPORT __declspec(dllimport)
+    #endif
+#else
+    #define EXPORT __attribute__((visibility("default")))
+#endif
+
 #define MAX_RADIOBUTTONS 10
 
 #include "../include/radioButton.h"
@@ -12,11 +22,11 @@ typedef struct {
     RadioButton *buttons[MAX_RADIOBUTTONS];
 } RadioButtonGroup;
 
-RadioButtonGroup createRadioButtonGroup(int id, int selectedRadioButton);
+EXPORT RadioButtonGroup createRadioButtonGroup(int id, int selectedRadioButton);
 
-void addRadioButtonToGroup(RadioButtonGroup *group, RadioButton *btn);
+EXPORT void addRadioButtonToGroup(RadioButtonGroup *group, RadioButton *btn);
 
-void handleRadioButtonEvent(RadioButtonGroup *group, const SDL_Event event);
+EXPORT void handleRadioButtonEvent(RadioButtonGroup *group, const SDL_Event event);
 
 
 #endif

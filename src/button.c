@@ -8,7 +8,7 @@
 
 TTF_Font *buttonFont = NULL;
 
-Button createButton(int x, int y, int width, int height, int isPressed, int isHovered, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor, SDL_Color fontColor, int fontSize, char *text) {
+EXPORT Button createButton(int x, int y, int width, int height, int isPressed, int isHovered, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor, SDL_Color fontColor, int fontSize, char *text) {
     buttonFont = TTF_OpenFont("./fonts/font.ttf", fontSize);
     if (buttonFont == NULL) {
         printf("Error: failed to load font");
@@ -39,7 +39,7 @@ Button createButton(int x, int y, int width, int height, int isPressed, int isHo
     return button;
 }
 
-void handleButtonEvent(Button *btn, const SDL_Event event) {
+EXPORT void handleButtonEvent(Button *btn, const SDL_Event event) {
     int mx = event.button.x;
     int my = event.button.y;
     if (mx >= btn->x && mx <= (btn->x + btn->width) && my >= btn->y && my <= (btn->y + btn->height))
@@ -55,7 +55,7 @@ void handleButtonEvent(Button *btn, const SDL_Event event) {
     }
 }
 
-void renderButton(Button *btn, SDL_Renderer *renderer) {
+EXPORT void renderButton(Button *btn, SDL_Renderer *renderer) {
     /* Draw button portion of button */
     SDL_Rect buttonRect = {btn->x, btn->y, btn->width, btn->height};
 

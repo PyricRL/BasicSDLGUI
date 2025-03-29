@@ -8,7 +8,7 @@
 
 TTF_Font *textInputFont = NULL;
 
-TextInput createTextInput(int x, int y, int width, int height, int isSelected, int isHovered, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor, SDL_Color fontColor, int fontSize, char *text) {
+EXPORT TextInput createTextInput(int x, int y, int width, int height, int isSelected, int isHovered, SDL_Color color, SDL_Color hoverColor, SDL_Color clickColor, SDL_Color fontColor, int fontSize, char *text) {
     textInputFont = TTF_OpenFont("./fonts/font.ttf", fontSize);
     if (textInputFont == NULL) {
         printf("Error: failed to load font in textInput");
@@ -39,7 +39,7 @@ TextInput createTextInput(int x, int y, int width, int height, int isSelected, i
     return textInput;
 }
 
-void handleTextInputEvent(TextInput *txtInpt, const SDL_Event event, char *textBuffer, size_t maxLen) {
+EXPORT void handleTextInputEvent(TextInput *txtInpt, const SDL_Event event, char *textBuffer, size_t maxLen) {
     int mx = event.button.x;
     int my = event.button.y;
     if (event.type == SDL_MOUSEBUTTONUP) {
@@ -83,7 +83,7 @@ void handleTextInputEvent(TextInput *txtInpt, const SDL_Event event, char *textB
     }
 }
 
-void renderTextInput(TextInput *txtInpt, SDL_Renderer *renderer) {
+EXPORT void renderTextInput(TextInput *txtInpt, SDL_Renderer *renderer) {
     /* Draw button portion of button */
     SDL_Rect textInputRect = {txtInpt->x, txtInpt->y, txtInpt->width, txtInpt->height};
 
