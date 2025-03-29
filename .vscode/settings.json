@@ -4,6 +4,7 @@
         "button.h": "c",
         "stdio.h": "c",
         "text.h": "c",
-        "togglebutton.h": "c"
+        "togglebutton.h": "c",
+        "radiobutton.h": "c"
     }
 }
